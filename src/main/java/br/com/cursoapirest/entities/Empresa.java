@@ -26,15 +26,15 @@ public class Empresa implements Serializable {
 	private static final long serialVersionUID = 6665222144124506150L;
 	
 	@Id
-	@GeneratedValue(strategy =GenerationType.AUTO )
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column(nullable = false)
+	@Column(nullable = false, unique = true , name="razao_social")
 	private String razaoSocial;
-	@Column(nullable = false)
+	@Column(nullable = false, unique = true)
 	private String cnpj;
-	@Column(nullable = false)
+	@Column(nullable = false,name="data_criacao")
 	private Date dataCriacao;
-	@Column(nullable = false)
+	@Column(nullable = false,name="data_atualizacao")
 	private Date dataAtualizacao;
 	@OneToMany(mappedBy = "empresa" , fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	private List<Funcionario> funcionarios;
@@ -76,13 +76,14 @@ public class Empresa implements Serializable {
 	public List<Funcionario> getFuncionarios() {
 		return funcionarios;
 	}
+	@OneToMany(mappedBy = "empresa",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	public void setFuncionarios(List<Funcionario> funcionarios) {
 		this.funcionarios = funcionarios;
 	}
 
 	@PreUpdate
 	public void preUpdate() {
-		dataAtualizacao = new java.util.Date();
+		dataAtualizacao = new Date();
 	}
 	
 	@PrePersist

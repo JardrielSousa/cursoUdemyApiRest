@@ -3,7 +3,6 @@ package br.com.cursoapirest.entities;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -18,7 +17,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
-import javax.persistence.Transient;
 
 import br.com.cursoapirest.enums.PerfilEnum;
 
@@ -67,7 +65,7 @@ public class Funcionario {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	@Column(nullable = false)
+	@Column(nullable = false,unique = true)
 	public String getCpf() {
 		return cpf;
 	}
@@ -84,10 +82,6 @@ public class Funcionario {
 		this.valorHora = valorHora;
 	}
 
-	@Transient
-	public Optional<Float> getQtdHorasTrabalhadaDia() {
-		return Optional.ofNullable(qtdHorasTrabalhadaDia);
-	}
 
 	public void setQtdHorasTrabalhadaDia(float qtdHorasTrabalhadaDia) {
 		this.qtdHorasTrabalhadaDia = qtdHorasTrabalhadaDia;
@@ -100,7 +94,7 @@ public class Funcionario {
 	public void setQtdHoraAlmoco(float qtdHoraAlmoco) {
 		this.qtdHoraAlmoco = qtdHoraAlmoco;
 	}
-	@Column(nullable = false)
+	@Column(nullable = false,name="data_criacao")
 	public Date getDataCriacao() {
 		return dataCriacao;
 	}
@@ -108,7 +102,7 @@ public class Funcionario {
 	public void setDataCriacao(Date dataCriacao) {
 		this.dataCriacao = dataCriacao;
 	}
-	@Column(nullable = false)
+	@Column(nullable = false,name="data_atualizacao")
 	public Date getDataAtualizacao() {
 		return dataAtualizacao;
 	}

@@ -1,0 +1,1 @@
+{"resources":{"src/main/resources/db/migration/mysql/V2__InsertEmpresa.sql":{"sql-editor-data-source-id":"mysql5-17335e4f497-4e07f10fc593785f","default-datasource":"mysql5-17335e4f497-4e07f10fc593785f","default-catalog":"flyway"}}}
