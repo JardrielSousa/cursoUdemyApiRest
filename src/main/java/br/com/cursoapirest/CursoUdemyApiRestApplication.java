@@ -29,8 +29,8 @@ public class CursoUdemyApiRestApplication {
 	public CommandLineRunner commandLineRunner() {
 		return args ->{
 			Empresa empresa = new Empresa();
-			empresa.setRazaoSocial("j multimarcas");
-			empresa.setCnpj("00001");
+			empresa.setRazaoSocial("js multimarcas tem de tudo");
+			empresa.setCnpj("000099");
 			empresaRepository.save(empresa);
 			
 			Empresa empresaCnpj = empresaRepository.findByCnpj("00001");
