@@ -12,13 +12,10 @@ import org.springframework.stereotype.Component;
 import br.com.cursoapirest.Utils.SenhaUtils;
 import br.com.cursoapirest.entities.Empresa;
 import br.com.cursoapirest.repositories.EmpresaRepository;
+import br.com.cursoapirest.service.EmpresaService;
 
 @SpringBootApplication
 public class CursoUdemyApiRestApplication {
-	@Autowired
-	private EmpresaRepository empresaRepository;
-	
-	
 	@Value("${paginacao.qtdPorPagina}")
 	private int valor;
 	public static void main(String[] args) {
@@ -28,20 +25,26 @@ public class CursoUdemyApiRestApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner() {
 		return args ->{
-			Empresa empresa = new Empresa();
-			empresa.setRazaoSocial("js multimarcas tem de tudo");
-			empresa.setCnpj("000099");
-			empresaRepository.save(empresa);
 			
-			Empresa empresaCnpj = empresaRepository.findByCnpj("00001");
-			System.out.println("empresa por cnpj: " + empresaCnpj);
-			System.out.println("quantidade:" + this.valor);
-			String senha = SenhaUtils.gerarByCript("12345");
-			System.out.println("senha encripted:" + senha);
-			String senhaNew = SenhaUtils.gerarByCript("12345");
-			System.out.println("senha encripted New:" + senhaNew);
-			
-			System.out.println("senha valida:" + SenhaUtils.validarSenha("12345", senha));
+
+			 /*Empresa empresa = new Empresa();
+			  empresa.setRazaoSocial("js multimarcas t");
+			  empresa.setCnpj("000098");
+			  
+			  empresaService.salvarEmpresa(empresa);
+			  
+			  
+			   
+			 * Empresa empresaCnpj = empresaRepository.findByCnpj("00001");
+			 * System.out.println("empresa por cnpj: " + empresaCnpj);
+			 * System.out.println("quantidade:" + this.valor); String senha =
+			 * SenhaUtils.gerarByCript("12345"); System.out.println("senha encripted:" +
+			 * senha); String senhaNew = SenhaUtils.gerarByCript("12345");
+			 * System.out.println("senha encripted New:" + senhaNew);
+			 * 
+			 * System.out.println("senha valida:" + SenhaUtils.validarSenha("12345",
+			 * senha));
+			 */
 		};
 	}
 

@@ -36,13 +36,15 @@ public class Empresa implements Serializable {
 	private Date dataCriacao;
 	@Column(nullable = false,name="data_atualizacao")
 	private Date dataAtualizacao;
-	@OneToMany(mappedBy = "empresa" , fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-	private List<Funcionario> funcionarios;
-	
+
+	/*
+	 * @OneToMany(mappedBy = "empresa" , fetch = FetchType.LAZY,cascade =
+	 * CascadeType.ALL) private List<Funcionario> funcionarios;
+	 */
 	public Empresa() {
 		
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -73,13 +75,13 @@ public class Empresa implements Serializable {
 	public void setDataAtualizacao(Date dataAtualizacao) {
 		this.dataAtualizacao = dataAtualizacao;
 	}
-	public List<Funcionario> getFuncionarios() {
-		return funcionarios;
-	}
-	@OneToMany(mappedBy = "empresa",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-	public void setFuncionarios(List<Funcionario> funcionarios) {
-		this.funcionarios = funcionarios;
-	}
+	/*
+	 * public List<Funcionario> getFuncionarios() { return funcionarios; }
+	 * 
+	 * @OneToMany(mappedBy = "empresa",fetch = FetchType.LAZY,cascade =
+	 * CascadeType.ALL) public void setFuncionarios(List<Funcionario> funcionarios)
+	 * { this.funcionarios = funcionarios; }
+	 */
 
 	@PreUpdate
 	public void preUpdate() {
